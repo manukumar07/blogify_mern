@@ -29,6 +29,8 @@ app.use(
     credentials: true,
   })
 );
+
+//
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
@@ -50,6 +52,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("Image has been uploaded successfully!");
 });
 
+//listening port
 connectDb();
 app.listen(PORT, () => {
   console.log(`server is running at port: ${PORT}`);
