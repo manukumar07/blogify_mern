@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 const DB =
-  "mongodb+srv://palmanukumar53:Ryb0wMIgt14F30LK@cluster0.xwxmwhv.mongodb.net/";
+  "";
 const connectDb = async () => {
   try {
     await mongoose.connect(DB);
