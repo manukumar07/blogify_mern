@@ -53,7 +53,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 });
 
 //listening port
-connectDb();
+connectDb(); //db
 app.listen(PORT, () => {
   console.log(`server is running at port: ${PORT}`);
 });

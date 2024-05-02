@@ -21,18 +21,19 @@ const Home = () => {
     setLoader(true);
     try {
       const res = await axios.get(URL + "/api/posts/" + search);
-      // console.log(res.data)
-      setPosts(res.data);
-      if (res.data.length === 0) {
-        setNoResults(true);
+      console.log("Response:", res.data); // Log the response data
+      if (Array.isArray(res.data)) {
+        setPosts(res.data);
+        setNoResults(res.data.length === 0);
       } else {
-        setNoResults(false);
+        console.error("Invalid data format: expected array");
+        setNoResults(true);
       }
-      setLoader(false);
     } catch (err) {
-      console.log(err);
-      setLoader(true);
+      console.error("Error fetching posts:", err);
+      setNoResults(true);
     }
+    setLoader(false);
   };
 
   useEffect(() => {
@@ -47,13 +48,14 @@ const Home = () => {
           <div className="h-[40vh] flex justify-center items-center">
             <Loader />
           </div>
-        ) : !noResults ? (
+        ) : posts.length > 0 ? (
           posts.map((post) => (
-            <>
-              <Link to={user ? `/posts/post/${post._id}` : "/login"}>
-                <HomePosts key={post._id} post={post} />
-              </Link>
-            </>
+            <Link
+              key={post._id}
+              to={user ? `/posts/post/${post._id}` : "/login"}
+            >
+              <HomePosts post={post} />
+            </Link>
           ))
         ) : (
           <h3 className="text-center font-bold mt-16">No posts available</h3>
