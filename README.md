@@ -1,7 +1,6 @@
 ## Blogify
 
 A simple full-stack blog application built using the MERN stack (MongoDB, Express.js, React.js, Node.js).
-
 ## Features
 
 - User authentication (register, login, logout)
@@ -20,6 +19,10 @@ A simple full-stack blog application built using the MERN stack (MongoDB, Expres
   - Axios
   - Tailwind CSS (for styling)
   - Multer
+<<<<<<< HEAD
+=======
+
+>>>>>>> 86964c333ba224eca5ba61493110bbff71d98e00
 
 - **Backend**:
   - Node.js
