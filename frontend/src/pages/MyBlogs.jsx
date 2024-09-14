@@ -10,10 +10,12 @@ import Loader from "../components/Loader";
 
 const MyBlogs = () => {
   const { search } = useLocation();
+  // console.log(search)
   const [posts, setPosts] = useState([]);
   const [noResults, setNoResults] = useState(false);
   const [loader, setLoader] = useState(false);
   const { user } = useContext(UserContext);
+  // console.log(user)
 
   const fetchPosts = async () => {
     setLoader(true);
@@ -46,8 +48,8 @@ const MyBlogs = () => {
             <Loader />
           </div>
         ) : !noResults ? (
-          posts.map((post) => (
-            <>
+          posts?.map((post) => (
+            <h3>
               <Link to={user ? `/posts/post/${post._id}` : "/login"}>
                 <HomePosts key={post._id} post={post} />
               </Link>

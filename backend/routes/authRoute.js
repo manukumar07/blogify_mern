@@ -1,10 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const authController = require("../controllers/authController");
+const {
+  registerUser,
+  refetchUser,
+  loginUser,
+  logoutUser,
+} = require("../controllers/authController");
 
-router.post("/register", authController.register);
-router.post("/login", authController.login);
-router.get("/logout", authController.logout);
-router.get("/refetch", authController.refetch);
+// REGISTER
+router.post("/register", registerUser);
+// LOGIN
+router.post("/login", loginUser);
+// LOGOUT
+router.get("/logout", logoutUser);
+// REFETCH USER
+router.get("/refetch", refetchUser);
 
 module.exports = router;

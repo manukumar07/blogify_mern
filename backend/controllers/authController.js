@@ -1,9 +1,10 @@
+// controllers/authController.js
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-//register logic
-const register = async (req, res) => {
+// REGISTER
+exports.registerUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const salt = await bcrypt.genSalt(10);
@@ -16,24 +17,27 @@ const register = async (req, res) => {
   }
 };
 
-// login logic
-const login = async (req, res) => {
+// LOGIN
+exports.loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
       return res.status(404).json("User not found!");
     }
+
     const match = await bcrypt.compare(req.body.password, user.password);
 
     if (!match) {
       return res.status(401).json("Wrong credentials!");
     }
+
     const token = jwt.sign(
       { _id: user._id, username: user.username, email: user.email },
       process.env.SECRET,
-      { expiresIn: "3d" }
+      { expiresIn: "2hr" }
     );
+
     const { password, ...info } = user._doc;
     res.cookie("token", token).status(200).json(info);
   } catch (err) {
@@ -41,8 +45,8 @@ const login = async (req, res) => {
   }
 };
 
-// logout logic
-const logout = async (req, res) => {
+// LOGOUT
+exports.logoutUser = async (req, res) => {
   try {
     res
       .clearCookie("token", { sameSite: "none", secure: true })
@@ -53,8 +57,8 @@ const logout = async (req, res) => {
   }
 };
 
-//
-const refetch = (req, res) => {
+// REFETCH USER
+exports.refetchUser = (req, res) => {
   const token = req.cookies.token;
   jwt.verify(token, process.env.SECRET, {}, async (err, data) => {
     if (err) {
@@ -62,6 +66,6 @@ const refetch = (req, res) => {
     }
     res.status(200).json(data);
   });
+  res.json({ message: "Refetch endpoint hit!" });
+  // res.status(200).json({ message: "Refetch endpoint hit!" });
 };
-
-module.exports = { register, login, logout, refetch };

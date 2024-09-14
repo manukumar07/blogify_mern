@@ -1,4 +1,4 @@
-## MERN-Blogify
+## Blogify
 
 A simple full-stack blog application built using the MERN stack (MongoDB, Express.js, React.js, Node.js).
 
@@ -14,12 +14,12 @@ A simple full-stack blog application built using the MERN stack (MongoDB, Expres
 ## Technologies Used
 
 - **Frontend**:
+
   - React.js
   - React Router
   - Axios
   - Tailwind CSS (for styling)
   - Multer
-  
 
 - **Backend**:
   - Node.js
