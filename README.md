@@ -27,8 +27,12 @@ A simple full-stack blog application built using the MERN stack (MongoDB, Expres
   - bcryptjs
 
 ## Screenshots
+
+![Blogify1](https://github.com/user-attachments/assets/6ad6b912-8b2f-45f0-8684-4753e4f4a307)
+
 ![Blogify2](https://github.com/user-attachments/assets/1b69a79b-abd4-4e6e-a10a-bf3b3954cc5b)
 
 ![Blogify3](https://github.com/user-attachments/assets/84bc2464-44fa-4b83-aa6b-12f377842bed)
 
-![Blogify1](https://github.com/user-attachments/assets/424ed99c-ac8d-4fde-9dee-4c4b54e22f09)
+
+
