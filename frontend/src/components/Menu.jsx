@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import axios from "axios";
-import { URL } from "../url";
 import { Link, useNavigate } from "react-router-dom";
+
+// const URL = "http://localhost:5000"; // Define your base URL
 
 const Menu = () => {
   const { user, setUser } = useContext(UserContext);
@@ -10,7 +11,9 @@ const Menu = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get(URL + "/api/auth/logout", { withCredentials: true });
+      await axios.get(`http://localhost:5000/api/auth/logout`, {
+        withCredentials: true,
+      });
       setUser(null);
       navigate("/login");
     } catch (err) {

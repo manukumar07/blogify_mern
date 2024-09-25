@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
-const DB =
-""
+const DB = "";
 const connectDb = async () => {
   try {
     await mongoose.connect(DB);

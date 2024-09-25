@@ -1,4 +1,3 @@
-// controllers/commentController.js
 const Comment = require("../models/Comment");
 
 // CREATE COMMENT

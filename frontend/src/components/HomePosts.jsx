@@ -1,9 +1,10 @@
-// import { IF } from "../url";
+// Ensure the correct import for React if needed
+import React from "react";
 
 const HomePosts = ({ post }) => {
   return (
     <div className="w-full flex flex-col md:flex-row mt-8 space-y-4 md:space-y-0 md:space-x-4">
-      {/* Left */}
+      {/* Left: Image Section */}
       <div className="w-full md:w-[35%] h-[200px] flex justify-center items-center">
         <img
           src={post.photo}
@@ -11,7 +12,7 @@ const HomePosts = ({ post }) => {
           className="h-full w-full object-cover rounded-lg"
         />
       </div>
-      {/* Right */}
+      {/* Right: Content Section */}
       <div className="flex flex-col w-full md:w-[65%]">
         <h1 className="text-lg font-bold md:mb-2 mb-1 md:text-2xl text-black">
           {post.title}
@@ -24,29 +25,13 @@ const HomePosts = ({ post }) => {
           </div>
         </div>
         <p className="text-sm md:text-md text-black">
-          {post.desc.slice(0, 200) + " ...Read more"}
+          {post.desc && post.desc.length > 200
+            ? post.desc.slice(0, 200) + " ...Read more"
+            : post.desc || "Description not available."}
         </p>
       </div>
     </div>
   );
 };
+
 export default HomePosts;
-
-// DemoHomePosts Component
-// const DemoHomePosts = () => {
-//   const samplePost = {
-//     photo: "https://via.placeholder.com/200", // Example image URL
-//     title: "Sample Blog Post Title",
-//     username: "sampleuser",
-//     updatedAt: new Date().toISOString(),
-//     desc: "This is a short description of the sample blog post. It is meant to demonstrate the functionality of the HomePosts component.",
-//   };
-
-//   return (
-//     <div className="p-4">
-//       <HomePosts post={samplePost} />
-//     </div>
-//   );
-// };
-
-// export default DemoHomePosts;

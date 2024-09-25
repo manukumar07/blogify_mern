@@ -10,34 +10,35 @@ import Loader from "../components/Loader";
 
 const MyBlogs = () => {
   const { search } = useLocation();
-  // console.log(search)
   const [posts, setPosts] = useState([]);
   const [noResults, setNoResults] = useState(false);
   const [loader, setLoader] = useState(false);
   const { user } = useContext(UserContext);
-  // console.log(user)
 
   const fetchPosts = async () => {
     setLoader(true);
     try {
-      const res = await axios.get(URL + "/api/posts/user/" + user._id);
-      // console.log(res.data)
-      setPosts(res.data);
-      if (res.data.length === 0) {
-        setNoResults(true);
-      } else {
-        setNoResults(false);
+      if (user?._id) {
+        const res = await axios.get(`${URL}/api/posts/user/${user._id}`);
+        setPosts(res.data);
+
+        // Check if no posts are found
+        if (res.data.length === 0) {
+          setNoResults(true);
+        } else {
+          setNoResults(false);
+        }
       }
-      setLoader(false);
     } catch (err) {
-      console.log(err);
-      setLoader(true);
+      console.error("Error fetching posts:", err);
+    } finally {
+      setLoader(false); // Ensure loader is hidden after both success and error
     }
   };
 
   useEffect(() => {
     fetchPosts();
-  }, [search]);
+  }, [search, user?._id]); // Include user._id to refetch if the user changes
 
   return (
     <div>
@@ -48,12 +49,13 @@ const MyBlogs = () => {
             <Loader />
           </div>
         ) : !noResults ? (
-          posts?.map((post) => (
-            <h3>
-              <Link to={user ? `/posts/post/${post._id}` : "/login"}>
-                <HomePosts key={post._id} post={post} />
-              </Link>
-            </>
+          posts.map((post) => (
+            <Link
+              key={post._id}
+              to={user ? `/posts/post/${post._id}` : "/login"}
+            >
+              <HomePosts post={post} />
+            </Link>
           ))
         ) : (
           <h3 className="text-center font-bold mt-16">No posts available</h3>

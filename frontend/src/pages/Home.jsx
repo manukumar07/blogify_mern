@@ -2,26 +2,22 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import HomePosts from "../components/HomePosts";
 import Navbar from "../components/Navbar";
-import { IF, URL } from "../url";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Loader from "../components/Loader";
 import { UserContext } from "../context/UserContext";
 
 const Home = () => {
   const { search } = useLocation();
-  // console.log(search)
   const [posts, setPosts] = useState([]);
   const [noResults, setNoResults] = useState(false);
   const [loader, setLoader] = useState(false);
   const { user } = useContext(UserContext);
-  // console.log(user)
 
   const fetchPosts = async () => {
     setLoader(true);
     try {
-      const res = await axios.get(URL + "/api/posts/" + search);
-      // console.log(res.data)
+      const res = await axios.get("http://localhost:5000/api/posts/" + search); // Hardcoded localhost URL
       setPosts(res.data);
       if (res.data.length === 0) {
         setNoResults(true);
@@ -34,10 +30,6 @@ const Home = () => {
       setLoader(true);
     }
   };
-
-  useEffect(() => {
-    fetchPosts();
-  }, [search]);
 
   return (
     <>
