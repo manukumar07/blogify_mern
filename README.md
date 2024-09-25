@@ -11,7 +11,6 @@ A simple full-stack blog application built using the MERN stack (MongoDB, Expres
 - Responsive design
 
 ## Technologies Used
-
 - **Frontend**:
 
   - React.js
@@ -26,3 +25,10 @@ A simple full-stack blog application built using the MERN stack (MongoDB, Expres
   - MongoDB (with Mongoose ODM)
   - JSON Web Tokens (JWT) for authentication
   - bcryptjs
+
+## Screenshots
+![Blogify2](https://github.com/user-attachments/assets/1b69a79b-abd4-4e6e-a10a-bf3b3954cc5b)
+
+![Blogify3](https://github.com/user-attachments/assets/84bc2464-44fa-4b83-aa6b-12f377842bed)
+
+![Blogify1](https://github.com/user-attachments/assets/424ed99c-ac8d-4fde-9dee-4c4b54e22f09)
