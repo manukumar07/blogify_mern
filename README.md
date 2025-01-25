@@ -9,7 +9,6 @@ A simple full-stack blog application built using the MERN stack (MongoDB, Expres
 - 💬 **Commenting System**: Engage readers with a comments section  
 - 🖼️ **Image Upload**: Add visuals to blog posts using **Multer**  
 - 🔍 **Search Functionality**: Quickly find blogs by title or content  
-- 🗂️ **Filter by Category**: Browse blogs by predefined categories (e.g., Technology, Health, Lifestyle)  
 - 📑 **Pagination**: Load blogs in smaller chunks for better performance  
 - 📱 **Responsive Design**: Optimized for mobile, tablet, and desktop  
 
