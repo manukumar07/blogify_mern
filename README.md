@@ -41,13 +41,27 @@ A simple yet powerful full-stack blog application built with the **MERN** stack 
 - 🧂 **bcryptjs** – Secure password hashing  
 - 🖼️ **Multer** – Middleware for image upload handling  
 
+### ⚙️ **Installation**
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/blogify.git
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Run the development server:
+    ```bash
+    npm run dev
+    ```
 
-## 🚀 Getting Started
+## **📸 UI Preview**  
+🚀 **Coming Soon!** 🎨  
 
-1. Clone the repo:
+---  
 
-```bash
-git clone https://github.com/your-username/blogify.git
-cd blogify
+## **📩 Contributing**  
+🙌 Contributions are welcome! Feel free to fork the repo and submit a pull request.  
 
+💙 **Built with ❤️ by [Manu Kumar Pal](https://github.com/manukumar07)**  
 
