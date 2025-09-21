@@ -43,33 +43,33 @@ A simple yet powerful full-stack blog application built with the **MERN** stack 
 
 ---
 
-## ⚙️ Installation
 
-1. Clone the repository:
+## ⚡ Quick Start
+```bash
+# Backend
+cd backend
+npm install && npm start
 
-    ```bash
-    git clone https://github.com/yourusername/blogify.git
-    ```
+# Frontend
+cd frontend
+npm install && npm run dev
 
-2. Install dependencies:
-
-    ```bash
-    npm install
-    ```
-
-3. Run the development server:
-
-    ```bash
-    npm run dev
-    ```
-
----
+````
 
 ## 📸 UI Preview
 
 🚀 **Coming Soon!** 🎨  
 
 ---
+
+##  🔑 Environment Variables (/backend/.env)
+
+```
+PORT=8000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret_key
+GEMINI_API_KEY= XXXX
+````
 
 ## 📩 Contributing
 
