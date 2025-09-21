@@ -3,57 +3,51 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const connectDb = require("./config/db");
-const authRoute = require("./routes/authRoute");
-const userRoute = require("./routes/userRoute");
-const postRoute = require("./routes/postRoute");
-const commentRoute = require("./routes/commentRoute");
-const multer = require("multer");
+const authRoutes = require("./routes/auth.route");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const ConnectDB = require("./config/db");
+const postRoutes = require("./routes/post.route")
+const commentRoutes = require("./routes/comment.route")
+const aiRoutes = require("./routes/ai.routes")
 
 dotenv.config();
 
 const app = express();
 
-const PORT = process.env.PORT || 5000; // define port number
+// Define PORT Number
+const PORT = process.env.PORT || 8000;
 
 app.use(cookieParser());
-app.use(cors());
 app.use(bodyParser.json());
-app.use("/images", express.static(path.join(__dirname, "/images")));
 
+
+
+
+// ✅ Serve uploaded images statically
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+
+// app.use(cors());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173",  // frontend URL
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
 
-//
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
-app.use("/api/posts", postRoute);
-app.use("/api/comments", commentRoute);
+app.use(express.json());
+app.use(cookieParser());
 
-// image upload
-const storage = multer.diskStorage({
-  destination: (req, file, fn) => {
-    fn(null, "images");
-  },
-  filename: (req, file, fn) => {
-    fn(null, req.body.img);
-  },
-});
-
-const upload = multer({ storage: storage });
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  res.status(200).json("Image has been uploaded successfully!");
-  // console.log(req.body)
-});
+//route 
+app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
+app.use("/api/ai", aiRoutes);
 
 //listening port
-connectDb(); //db
+ConnectDB(); //db
 app.listen(PORT, () => {
   console.log(`server is running at port: ${PORT}`);
 });
