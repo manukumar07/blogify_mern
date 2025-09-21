@@ -16,7 +16,7 @@ A simple yet powerful full-stack blog application built with the **MERN** stack 
 - 🤖 **AI Blog Generator** – Instantly generate blog content with AI  
 - 🌙 **Dark & Light Mode** – Switch between light and dark themes  
 - 🗂️ **Categories** – Filter and explore blogs by predefined topics  
-- 📊 **User Dashboard** – Manage blogs, comments, and profile in one place  
+- 📊 **User Dashboard** – Manage blogs, and profile in one place  
 
 ---
 
