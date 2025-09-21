@@ -75,7 +75,7 @@ npm install && npm run dev
 PORT=8000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_secret_key
-GEMINI_API_KEY= XXXX
+GEMINI_API_KEY= XXXXXXXXXXX
 ````
 
 ## 📩 Contributing
